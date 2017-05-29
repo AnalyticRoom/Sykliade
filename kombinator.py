@@ -51,10 +51,13 @@ allAttendees = flatten(pairs)
 starterHavers = ['Marianne', 'Helene', 'Saskia']
 maincourseHavers = ['Mathias', 'Kjetil', 'Cecilia']
 
+tries = 0
 while (True):
+    tries += 1
     starterParties = listOflistOfParties(starterHavers)
     mainCourseParties = listOflistOfParties(maincourseHavers)
-    if not starterParties is None and not mainCourseParties is None:
+    if starterParties is not None and mainCourseParties is not None:
+        print ('After ' + str(tries) + ' tries:')
         print ('--- Forrett ---')
         for i in range(0, 3):
             print ('   til: ' + starterHavers[i] + ' skal: ' + str(starterParties[i]))
