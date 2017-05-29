@@ -8,6 +8,8 @@ def random_permutation(iterable, r=None):
     return tuple(random.sample(pool, r))
 
 pairs = [['Tore'],
+         ['Berit'],
+         ['Aurora'],
          ['Marit', 'Mathias'],
          ['Marianne', 'Andreas'],
          ['Helene', 'Morten'],
@@ -33,6 +35,7 @@ while (True):
     listOfStartersParties.remove('Herbert')
     for starterHaver in starterHavers:
         thisPartiesGuests = allGuests[int (len(allGuests)/len(starterHavers) * (i)):int (len(allGuests)/len(starterHavers) * (i+1))]
+        thisPartiesGuests.insert(0, starterHaver)
         for pair in pairs:
             if len(pair) <= 1:
                 continue
@@ -40,7 +43,7 @@ while (True):
                 noPairsInGuestLists = False
             if not(noPairsInGuestLists):
                 break
-        if (noPairsInGuestLists):
+        if noPairsInGuestLists:
             listOfStartersParties.append(thisPartiesGuests)
         i=i+1
 
