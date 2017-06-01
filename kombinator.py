@@ -9,7 +9,7 @@ def random_permutation(iterable, r=None):
     return tuple(random.sample(pool, r))
 
 
-def listOflistOfParties(partyHavers):
+def listOflistOfParties(partyHavers, thisPairs):
     permutation = random_permutation(allAttendees, len(allAttendees))
     guestsOnly = [x for x in permutation if x not in partyHavers]
     i=0
@@ -19,7 +19,7 @@ def listOflistOfParties(partyHavers):
     for partyHaver in partyHavers:
         thisGuests = guestsOnly[int (len(guestsOnly) / len(partyHavers) * (i)):int (len(guestsOnly) / len(partyHavers) * (i + 1))]
         thisGuests.insert(0, partyHaver)
-        for pair in pairs:
+        for pair in thisPairs:
             if len(pair) <= 1:
                 continue
             if (pair[0] in thisGuests) and (pair[1] in thisGuests):
@@ -55,9 +55,20 @@ maincourseHavers = ['Mathias', 'Kjetil', 'Cecilia']
 tries = 0
 while (True):
     tries += 1
-    starterParties = listOflistOfParties(starterHavers)
-    mainCourseParties = listOflistOfParties(maincourseHavers)
+    starterParties = listOflistOfParties(starterHavers, pairs)
+    if starterParties is None:
+        continue
+    pairsWithPairsFromStarterParties = pairs[:]
+    for starterParty in starterParties:
+        for j in range(0, len(starterParty) - 2):
+          pairsWithPairsFromStarterParties.append(starterParty[j:(j+2)])
+    #for starterParty in starterParties:
+    #    for j in range(0, len(starterParty) - 4):
+    #      pairsWithPairsFromStarterParties.append([str(starterParty[j]), str(starterParty[j+4])])
+    #print(pairsWithPairsFromStarterParties)
+    mainCourseParties = listOflistOfParties(maincourseHavers, pairsWithPairsFromStarterParties)
     if starterParties is not None and mainCourseParties is not None:
+        print(pairsWithPairsFromStarterParties)
         print ('After ' + str(tries) + ' tries:')
         print ('--- Forrett ---')
         for i in range(0, 3):
