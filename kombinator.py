@@ -36,6 +36,7 @@ def listOflistOfParties(partyHavers):
 
 pairs = [['Tore'],
          ['Berit'],
+         ['Mari'],
          ['Kristina', 'Kjetil'],
          ['Marit', 'Mathias'],
          ['Marianne', 'Andreas'],
