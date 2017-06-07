@@ -35,7 +35,6 @@ def listOflistOfParties(partyHavers, thisPairs):
     return None
 
 pairs = [['Tore'],
-         ['Berit'],
          ['Mari'],
          ['Kristina', 'Kjetil'],
          ['Marit', 'Mathias'],
@@ -45,7 +44,7 @@ pairs = [['Tore'],
          ['Ingrid', 'Henrik'],
          ['Saskia', 'Espen'],
          ['Cecilia', 'Eivind'],
-         ['Hege', 'Joergen']]
+         ['Joergen']]
 flatten = lambda l: [item for sublist in l for item in sublist]
 allAttendees = flatten(pairs)
 
@@ -68,7 +67,7 @@ while (True):
     #print(pairsWithPairsFromStarterParties)
     mainCourseParties = listOflistOfParties(maincourseHavers, pairsWithPairsFromStarterParties)
     if starterParties is not None and mainCourseParties is not None:
-        print(pairsWithPairsFromStarterParties)
+        #print(pairsWithPairsFromStarterParties)
         print ('After ' + str(tries) + ' tries:')
         print ('--- Forrett ---')
         for i in range(0, 3):
